@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Contact from '../Images/contact-us.png'
 import axios from 'axios';
 import ReactSnackBar from "react-js-snackbar";
-
 class Contactus extends Component {
     constructor(props) {
         super(props)
@@ -10,11 +9,11 @@ class Contactus extends Component {
         this.state = {
             name: '',
             email: '',
-            subject: '',
+            mobile: '',
             message: '',
-            notifyActionSuccess: false,
+            notifyActionSuccess: '',
             SuccessMsg: '',
-            hasError: false,
+            hasError: '',
             errorMsg: ''
         }
     }
@@ -23,11 +22,11 @@ class Contactus extends Component {
     }
     handleSubmit= e => {
         e.preventDefault()
-        const { name, email, subject, message } = this.state;
+        const { name, email, mobile, message } = this.state;
         /**
          * TODO : validation
          */
-        axios.post('http://localhost:3001/api/form', { name, email, subject, message})
+        axios.post('http://localhost:3001/api/form', { name, email, mobile, message})
           .then((response) => {
             if(response.data.success) {
                 this.setState({notifyActionSuccess: true, SuccessMsg: response.data.message});
@@ -105,7 +104,7 @@ class Contactus extends Component {
                                                     onChange={this.handleChange}
                                                     className="form-control"
                                                     id="name"
-                                                    placeholder="Your Name"
+                                                    placeholder="Your Name*"
                                                     data-rule="minlen:4"
                                                     data-msg="Please enter at least 4 chars" />
                                                 <div className="validation"></div>
@@ -117,7 +116,7 @@ class Contactus extends Component {
                                                     name="email"
                                                     onChange={this.handleChange}
                                                     id="email"
-                                                    placeholder="Your Email"
+                                                    placeholder="Your Email*"
                                                     data-rule="email"
                                                     data-msg="Please enter a valid email" />
                                                 <div className="validation"></div>
@@ -127,12 +126,12 @@ class Contactus extends Component {
                                             <input
                                                 type="text"
                                                 className="form-control"
-                                                name="subject"
+                                                name="mobile"
                                                 onChange={this.handleChange}
-                                                id="subject"
-                                                placeholder="Subject"
-                                                data-rule="minlen:4"
-                                                data-msg="Please enter at least 8 chars of subject" />
+                                                id="mobile"
+                                                placeholder="Your Phone*"
+                                                data-rule="required"
+                                                data-msg="Please enter Your contact number" />
                                             <div className="validation"></div>
                                         </div>
                                         <div className="form-group">
@@ -164,14 +163,18 @@ class Contactus extends Component {
     notifyActionStatus = () => {
         if(this.state.notifyActionSuccess) {
             return(
-            <ReactSnackBar Show={this.state.notifyActionSuccess}>
+            <ReactSnackBar
+             Icon={<span><i className="fa fa-check" aria-hidden="true" style={{color:'green', fontSize:'50px'}}></i></span>}
+              Show={this.state.notifyActionSuccess}>
                 {this.state.SuccessMsg}
             </ReactSnackBar>)
             
         }
         if(this.state.hasError) {
             return (
-                <ReactSnackBar Show={this.state.hasError}>
+                <ReactSnackBar 
+                 Icon={<span><i className="fa fa-times" aria-hidden="true" style={{color:'red', fontSize:'50px'}}></i></span >}
+                 Show={this.state.hasError}>
                 {this.state.errorMsg}
             </ReactSnackBar>
             )

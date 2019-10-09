@@ -15,8 +15,8 @@ class Footer extends Component {
                                     Contact: Jinson Johny +91-9747867892</p>
                                 <p>Email:<a href="mailto:info@cloudhomesdevelopers.com" className="mailid"  ><b>info@cloudhomesdevelopers.com</b></a></p>
                                 <ul>
-                                    <li className="facebook"><a href="/"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li className="twitter"><a href="/"><i className="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li className="facebook"><a href="https://www.facebook.com/Cloud-Homes-Developers-115820349825003/?modal=admin_todo_tour" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li className="twitter"><a href="https://twitter.com/cloud_homes" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter" aria-hidden="true"></i></a></li>
                                     <li className="call" ><a href="tel:919747867892" className="floatp" target="_blank" rel="noopener noreferrer"><i className="fa fa-phone"></i></a></li>
                                     <li className="mail"><a href="mailto:info@cloudhomesdevelopers.com" className="floate" target="_blank" rel="noopener noreferrer">
                                         <i className="fa fa-envelope my-floate"></i></a></li>
